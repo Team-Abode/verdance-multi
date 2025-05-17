@@ -1,21 +1,45 @@
 package com.teamabode.verdance.platform;
 
+import com.mojang.serialization.Codec;
 import com.teamabode.verdance.Verdance;
 import com.teamabode.verdance.platform.services.IRegistryHelper;
+import net.minecraft.core.Holder;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.ai.memory.MemoryModuleType;
+import net.minecraft.world.entity.ai.sensing.Sensor;
+import net.minecraft.world.entity.ai.sensing.SensorType;
+import net.minecraft.world.entity.schedule.Activity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
+import java.util.Optional;
 import java.util.function.Supplier;
 
 public class NeoForgeRegistryHelper implements IRegistryHelper {
     private static final DeferredRegister<Item> ITEMS = DeferredRegister.createItems(Verdance.MOD_ID);
     private static final DeferredRegister<Block> BLOCKS = DeferredRegister.createBlocks(Verdance.MOD_ID);
+    private static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITY_TYPES = DeferredRegister.create(BuiltInRegistries.BLOCK_ENTITY_TYPE, Verdance.MOD_ID);
+    private static final DeferredRegister<EntityType<?>> ENTITY_TYPES = DeferredRegister.create(BuiltInRegistries.ENTITY_TYPE, Verdance.MOD_ID);
+    private static final DeferredRegister<Activity> ACTIVITIES = DeferredRegister.create(BuiltInRegistries.ACTIVITY, Verdance.MOD_ID);
+    private static final DeferredRegister<MemoryModuleType<?>> MEMORY_MODULE_TYPES = DeferredRegister.create(BuiltInRegistries.MEMORY_MODULE_TYPE, Verdance.MOD_ID);
+    private static final DeferredRegister<SensorType<?>> SENSOR_TYPES = DeferredRegister.create(BuiltInRegistries.SENSOR_TYPE, Verdance.MOD_ID);
+    private static final DeferredRegister<SoundEvent> SOUND_EVENTS = DeferredRegister.create(BuiltInRegistries.SOUND_EVENT, Verdance.MOD_ID);
 
     public static void init(IEventBus bus) {
         ITEMS.register(bus);
         BLOCKS.register(bus);
+        BLOCK_ENTITY_TYPES.register(bus);
+        ENTITY_TYPES.register(bus);
+        ACTIVITIES.register(bus);
+        MEMORY_MODULE_TYPES.register(bus);
+        SENSOR_TYPES.register(bus);
     }
 
     @Override
@@ -26,5 +50,45 @@ public class NeoForgeRegistryHelper implements IRegistryHelper {
     @Override
     public <T extends Block> Supplier<T> registerBlock(String name, Supplier<T> block) {
         return BLOCKS.register(name, block);
+    }
+
+    @Override
+    public <T extends BlockEntity> Supplier<BlockEntityType<T>> registerBlockEntity(String name, Supplier<BlockEntityType<T>> type) {
+        return BLOCK_ENTITY_TYPES.register(name, type);
+    }
+
+    @Override
+    public <T extends Entity> Supplier<EntityType<T>> registerEntity(String name, Supplier<EntityType<T>> type) {
+        return ENTITY_TYPES.register(name, type);
+    }
+
+    @Override
+    public Supplier<Activity> registerActivity(String name) {
+        return ACTIVITIES.register(name, () -> new Activity(name));
+    }
+
+    @Override
+    public <T> Supplier<MemoryModuleType<T>> registerMemoryModuleType(String name) {
+        return MEMORY_MODULE_TYPES.register(name, () -> new MemoryModuleType<>(Optional.empty()));
+    }
+
+    @Override
+    public <T> Supplier<MemoryModuleType<T>> registerMemoryModuleType(String name, Codec<T> codec) {
+        return MEMORY_MODULE_TYPES.register(name, () -> new MemoryModuleType<>(Optional.of(codec)));
+    }
+
+    @Override
+    public <T extends Sensor<?>> Supplier<SensorType<T>> registerSensorType(String name, Supplier<SensorType<T>> sensor) {
+        return SENSOR_TYPES.register(name, sensor);
+    }
+
+    @Override
+    public Supplier<SoundEvent> registerSoundEvent(String name) {
+        return SOUND_EVENTS.register(name, SoundEvent::createVariableRangeEvent);
+    }
+
+    @Override
+    public Holder<SoundEvent> registerSoundEventHolder(String name) {
+        return SOUND_EVENTS.register(name, SoundEvent::createVariableRangeEvent);
     }
 }
