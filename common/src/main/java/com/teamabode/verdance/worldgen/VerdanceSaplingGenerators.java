@@ -1,6 +1,6 @@
 package com.teamabode.verdance.worldgen;
 
-import com.teamabode.verdance.registry.VerdanceConfiguredFeatures;
+import com.teamabode.verdance.registry.datapack.VerdanceConfiguredFeatures;
 import net.minecraft.world.level.block.grower.TreeGrower;
 
 import java.util.Optional;

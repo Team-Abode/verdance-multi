@@ -3,6 +3,7 @@ package com.teamabode.verdance.platform;
 import com.mojang.serialization.Codec;
 import com.teamabode.verdance.Verdance;
 import com.teamabode.verdance.platform.services.IRegistryHelper;
+import net.minecraft.advancements.CriterionTrigger;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -18,6 +19,11 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.entity.DecoratedPotPattern;
+import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator;
+import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorType;
+import net.minecraft.world.level.levelgen.feature.trunkplacers.TrunkPlacer;
+import net.minecraft.world.level.levelgen.feature.trunkplacers.TrunkPlacerType;
 
 import java.util.Optional;
 import java.util.function.Supplier;
@@ -73,9 +79,33 @@ public class FabricRegistryHelper implements IRegistryHelper {
     }
 
     @Override
+    public <T extends TrunkPlacer> Supplier<TrunkPlacerType<T>> registerTrunkPlacerType(String name, Supplier<TrunkPlacerType<T>> type) {
+        var entry = Registry.register(BuiltInRegistries.TRUNK_PLACER_TYPE, Verdance.id(name), type.get());
+        return () -> entry;
+    }
+
+    @Override
+    public <T extends TreeDecorator> Supplier<TreeDecoratorType<T>> registerTreeDecoratorType(String name, Supplier<TreeDecoratorType<T>> type) {
+        var entry = Registry.register(BuiltInRegistries.TREE_DECORATOR_TYPE, Verdance.id(name), type.get());
+        return () -> entry;
+    }
+
+    @Override
+    public <T extends CriterionTrigger<?>> Supplier<T> registerTriggerTypes(String name, Supplier<T> trigger) {
+        var entry = Registry.register(BuiltInRegistries.TRIGGER_TYPES, Verdance.id(name), trigger.get());
+        return () -> entry;
+    }
+
+    @Override
+    public Supplier<DecoratedPotPattern> registerDecoratedPotPattern(String name, Supplier<DecoratedPotPattern> pattern) {
+        var entry = Registry.register(BuiltInRegistries.DECORATED_POT_PATTERN, Verdance.id(name), pattern.get());
+        return () -> entry;
+    }
+
+    @Override
     public Supplier<SoundEvent> registerSoundEvent(String name) {
         ResourceLocation location = Verdance.id(name);
-        SoundEvent entry = Registry.register(BuiltInRegistries.SOUND_EVENT, location, SoundEvent.createVariableRangeEvent(location));
+        var entry = Registry.register(BuiltInRegistries.SOUND_EVENT, location, SoundEvent.createVariableRangeEvent(location));
         return () -> entry;
     }
 

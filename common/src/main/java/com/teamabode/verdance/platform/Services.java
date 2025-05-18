@@ -5,6 +5,7 @@ import com.teamabode.verdance.platform.services.IRegistryHelper;
 
 import java.util.ServiceLoader;
 
+// TODO: config service and general config implementation
 public class Services {
     public static final IPlatformHelper PLATFORM = load(IPlatformHelper.class);
     public static final IRegistryHelper REGISTRY = load(IRegistryHelper.class);

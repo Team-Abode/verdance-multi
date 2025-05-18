@@ -15,6 +15,8 @@ public class VerdanceNeoForge {
         NeoForgeRegistryHelper.init(bus);
 
         bus.addListener(this::setup);
+
+        // TODO: compostables, flammables, strippable blocks
     }
 
     private void setup(FMLCommonSetupEvent event) {

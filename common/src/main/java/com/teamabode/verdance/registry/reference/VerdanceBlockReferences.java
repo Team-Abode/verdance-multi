@@ -1,4 +1,4 @@
-package com.teamabode.verdance.misc;
+package com.teamabode.verdance.registry.reference;
 
 import com.teamabode.verdance.Verdance;
 import net.minecraft.core.registries.Registries;

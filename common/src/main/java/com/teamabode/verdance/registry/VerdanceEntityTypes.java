@@ -33,9 +33,5 @@ public class VerdanceEntityTypes {
         return Services.REGISTRY.registerEntity(name, () -> builder.build(id.toString()));
     }
 
-    public static void register() {
-        //SpawnPlacements.register(SILK_MOTH, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING, SilkMothEntity::checkSilkMothSpawnRules);
-        //FabricDefaultAttributeRegistry.register(SILK_MOTH, SilkMothEntity.createSilkMothAttributes());
-        //FabricDefaultAttributeRegistry.register(SILKWORM, SilkwormEntity.createSilkwormAttributes());
-    }
+    public static void init() {}
 }

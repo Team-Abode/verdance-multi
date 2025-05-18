@@ -1,9 +1,10 @@
-package com.teamabode.verdance.registry;
+package com.teamabode.verdance.registry.datapack;
 
 import com.teamabode.verdance.Verdance;
 import com.teamabode.verdance.common.worldgen.MulberryTrunkPlacer;
 import com.teamabode.verdance.common.worldgen.SilkCocoonTreeDecorator;
 import com.teamabode.verdance.core.tag.VerdanceBlockTags;
+import com.teamabode.verdance.registry.VerdanceBlocks;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;

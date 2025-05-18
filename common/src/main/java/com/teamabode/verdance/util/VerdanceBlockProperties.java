@@ -12,7 +12,6 @@ import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.PushReaction;
 
 public class VerdanceBlockProperties {
-
     public static BlockBehaviour.Properties stucco(DyeColor color) {
         return BlockBehaviour.Properties.of()
                 .mapColor(color)
@@ -30,18 +29,5 @@ public class VerdanceBlockProperties {
                 .noCollission()
                 .ignitedByLava()
                 .pushReaction(PushReaction.DESTROY);
-    }
-
-    public static BlockBehaviour.Properties woodenButton() {
-        return BlockBehaviour.Properties.of()
-                .noCollission()
-                .strength(0.5F)
-                .pushReaction(PushReaction.DESTROY);
-    }
-
-
-
-    public static boolean never(BlockState state, BlockGetter blockGetter, BlockPos pos, EntityType<?> entity) {
-        return false;
     }
 }

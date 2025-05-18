@@ -3,6 +3,7 @@ package com.teamabode.verdance.registry;
 import com.teamabode.verdance.block.*;
 import com.teamabode.verdance.misc.*;
 import com.teamabode.verdance.platform.Services;
+import com.teamabode.verdance.registry.datapack.VerdanceConfiguredFeatures;
 import com.teamabode.verdance.util.VerdanceBlockProperties;
 import com.teamabode.verdance.worldgen.VerdanceSaplingGenerators;
 import net.minecraft.world.effect.MobEffects;

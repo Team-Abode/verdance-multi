@@ -1,7 +1,7 @@
 package com.teamabode.verdance.block;
 
-import com.teamabode.verdance.misc.VerdanceBlockReferences;
-import com.teamabode.verdance.misc.VerdanceItemReferences;
+import com.teamabode.verdance.registry.reference.VerdanceBlockReferences;
+import com.teamabode.verdance.registry.reference.VerdanceItemReferences;
 import net.minecraft.world.level.block.AttachedStemBlock;
 
 public class AttachedCantaloupeStemBlock extends AttachedStemBlock {
