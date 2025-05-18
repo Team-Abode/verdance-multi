@@ -1,11 +1,10 @@
 package com.teamabode.verdance.registry;
 
 import com.teamabode.verdance.block.*;
-import com.teamabode.verdance.block.access.ButtonBlock;
-import com.teamabode.verdance.block.access.StairBlock;
 import com.teamabode.verdance.misc.*;
 import com.teamabode.verdance.platform.Services;
 import com.teamabode.verdance.util.VerdanceBlockProperties;
+import com.teamabode.verdance.worldgen.VerdanceSaplingGenerators;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.DyeColor;
@@ -47,7 +46,7 @@ public class VerdanceBlocks {
     );
     public static final Supplier<Block> MULBERRY_STAIRS = register(
             "mulberry_stairs",
-            () -> new StairBlock(MULBERRY_PLANKS, Properties.ofFullCopy(MULBERRY_PLANKS.get()))
+            () -> new StairBlock(MULBERRY_PLANKS.get().defaultBlockState(), Properties.ofFullCopy(MULBERRY_PLANKS.get()))
     );
     public static final Supplier<Block> MULBERRY_SLAB = register(
             "mulberry_slab",
@@ -109,7 +108,7 @@ public class VerdanceBlocks {
     );
     public static final Supplier<Block> MULBERRY_BUTTON = register(
             "mulberry_button",
-            () -> new ButtonBlock(VerdanceBlockSetTypes.MULBERRY, 30, VerdanceBlockProperties.woodenButton())
+            () -> Blocks.woodenButton(VerdanceBlockSetTypes.MULBERRY)
     );
     public static final Supplier<Block> MULBERRY_SIGN = registerWithoutItem(
             "mulberry_sign",
@@ -273,7 +272,7 @@ public class VerdanceBlocks {
     );
     public static final Supplier<Block> WHITE_STUCCO_STAIRS = register(
             "white_stucco_stairs",
-            () -> new StairBlock(WHITE_STUCCO, Properties.ofFullCopy(WHITE_STUCCO.get()))
+            () -> new StairBlock(WHITE_STUCCO.get().defaultBlockState(), Properties.ofFullCopy(WHITE_STUCCO.get()))
     );
     public static final Supplier<Block> WHITE_STUCCO_SLAB = register(
             "white_stucco_slab",
@@ -289,7 +288,7 @@ public class VerdanceBlocks {
     );
     public static final Supplier<Block> LIGHT_GRAY_STUCCO_STAIRS = register(
             "light_gray_stucco_stairs",
-            () -> new StairBlock(LIGHT_GRAY_STUCCO, Properties.ofFullCopy(LIGHT_GRAY_STUCCO.get()))
+            () -> new StairBlock(LIGHT_GRAY_STUCCO.get().defaultBlockState(), Properties.ofFullCopy(LIGHT_GRAY_STUCCO.get()))
     );
     public static final Supplier<Block> LIGHT_GRAY_STUCCO_SLAB = register(
             "light_gray_stucco_slab",
@@ -305,7 +304,7 @@ public class VerdanceBlocks {
     );
     public static final Supplier<Block> GRAY_STUCCO_STAIRS = register(
             "gray_stucco_stairs",
-            () -> new StairBlock(GRAY_STUCCO, Properties.ofFullCopy(GRAY_STUCCO.get()))
+            () -> new StairBlock(GRAY_STUCCO.get().defaultBlockState(), Properties.ofFullCopy(GRAY_STUCCO.get()))
     );
     public static final Supplier<Block> GRAY_STUCCO_SLAB = register(
             "gray_stucco_slab",
@@ -321,7 +320,7 @@ public class VerdanceBlocks {
     );
     public static final Supplier<Block> BLACK_STUCCO_STAIRS = register(
             "black_stucco_stairs",
-            () -> new StairBlock(BLACK_STUCCO, Properties.ofFullCopy(BLACK_STUCCO.get()))
+            () -> new StairBlock(BLACK_STUCCO.get().defaultBlockState(), Properties.ofFullCopy(BLACK_STUCCO.get()))
     );
     public static final Supplier<Block> BLACK_STUCCO_SLAB = register(
             "black_stucco_slab",
@@ -337,7 +336,7 @@ public class VerdanceBlocks {
     );
     public static final Supplier<Block> BROWN_STUCCO_STAIRS = register(
             "brown_stucco_stairs",
-            () -> new StairBlock(BROWN_STUCCO, Properties.ofFullCopy(BROWN_STUCCO.get()))
+            () -> new StairBlock(BROWN_STUCCO.get().defaultBlockState(), Properties.ofFullCopy(BROWN_STUCCO.get()))
     );
     public static final Supplier<Block> BROWN_STUCCO_SLAB = register(
             "brown_stucco_slab",
@@ -353,7 +352,7 @@ public class VerdanceBlocks {
     );
     public static final Supplier<Block> RED_STUCCO_STAIRS = register(
             "red_stucco_stairs",
-            () -> new StairBlock(RED_STUCCO, Properties.ofFullCopy(RED_STUCCO.get()))
+            () -> new StairBlock(RED_STUCCO.get().defaultBlockState(), Properties.ofFullCopy(RED_STUCCO.get()))
     );
     public static final Supplier<Block> RED_STUCCO_SLAB = register(
             "red_stucco_slab",
@@ -369,7 +368,7 @@ public class VerdanceBlocks {
     );
     public static final Supplier<Block> ORANGE_STUCCO_STAIRS = register(
             "orange_stucco_stairs",
-            () -> new StairBlock(ORANGE_STUCCO, Properties.ofFullCopy(ORANGE_STUCCO.get()))
+            () -> new StairBlock(ORANGE_STUCCO.get().defaultBlockState(), Properties.ofFullCopy(ORANGE_STUCCO.get()))
     );
     public static final Supplier<Block> ORANGE_STUCCO_SLAB = register(
             "orange_stucco_slab",
@@ -385,7 +384,7 @@ public class VerdanceBlocks {
     );
     public static final Supplier<Block> YELLOW_STUCCO_STAIRS = register(
             "yellow_stucco_stairs",
-            () -> new StairBlock(YELLOW_STUCCO, Properties.ofFullCopy(YELLOW_STUCCO.get()))
+            () -> new StairBlock(YELLOW_STUCCO.get().defaultBlockState(), Properties.ofFullCopy(YELLOW_STUCCO.get()))
     );
     public static final Supplier<Block> YELLOW_STUCCO_SLAB = register(
             "yellow_stucco_slab",
@@ -401,7 +400,7 @@ public class VerdanceBlocks {
     );
     public static final Supplier<Block> LIME_STUCCO_STAIRS = register(
             "lime_stucco_stairs",
-            () -> new StairBlock(LIME_STUCCO, Properties.ofFullCopy(LIME_STUCCO.get()))
+            () -> new StairBlock(LIME_STUCCO.get().defaultBlockState(), Properties.ofFullCopy(LIME_STUCCO.get()))
     );
     public static final Supplier<Block> LIME_STUCCO_SLAB = register(
             "lime_stucco_slab",
@@ -417,7 +416,7 @@ public class VerdanceBlocks {
     );
     public static final Supplier<Block> GREEN_STUCCO_STAIRS = register(
             "green_stucco_stairs",
-            () -> new StairBlock(GREEN_STUCCO, Properties.ofFullCopy(GREEN_STUCCO.get()))
+            () -> new StairBlock(GREEN_STUCCO.get().defaultBlockState(), Properties.ofFullCopy(GREEN_STUCCO.get()))
     );
     public static final Supplier<Block> GREEN_STUCCO_SLAB = register(
             "green_stucco_slab",
@@ -433,7 +432,7 @@ public class VerdanceBlocks {
     );
     public static final Supplier<Block> CYAN_STUCCO_STAIRS = register(
             "cyan_stucco_stairs",
-            () -> new StairBlock(CYAN_STUCCO, Properties.ofFullCopy(CYAN_STUCCO.get()))
+            () -> new StairBlock(CYAN_STUCCO.get().defaultBlockState(), Properties.ofFullCopy(CYAN_STUCCO.get()))
     );
     public static final Supplier<Block> CYAN_STUCCO_SLAB = register(
             "cyan_stucco_slab",
@@ -449,7 +448,7 @@ public class VerdanceBlocks {
     );
     public static final Supplier<Block> LIGHT_BLUE_STUCCO_STAIRS = register(
             "light_blue_stucco_stairs",
-            () -> new StairBlock(LIGHT_BLUE_STUCCO, Properties.ofFullCopy(LIGHT_BLUE_STUCCO.get()))
+            () -> new StairBlock(LIGHT_BLUE_STUCCO.get().defaultBlockState(), Properties.ofFullCopy(LIGHT_BLUE_STUCCO.get()))
     );
     public static final Supplier<Block> LIGHT_BLUE_STUCCO_SLAB = register(
             "light_blue_stucco_slab",
@@ -465,7 +464,7 @@ public class VerdanceBlocks {
     );
     public static final Supplier<Block> BLUE_STUCCO_STAIRS = register(
             "blue_stucco_stairs",
-            () -> new StairBlock(BLUE_STUCCO, Properties.ofFullCopy(BLUE_STUCCO.get()))
+            () -> new StairBlock(BLUE_STUCCO.get().defaultBlockState(), Properties.ofFullCopy(BLUE_STUCCO.get()))
     );
     public static final Supplier<Block> BLUE_STUCCO_SLAB = register(
             "blue_stucco_slab",
@@ -481,7 +480,7 @@ public class VerdanceBlocks {
     );
     public static final Supplier<Block> PURPLE_STUCCO_STAIRS = register(
             "purple_stucco_stairs",
-            () -> new StairBlock(PURPLE_STUCCO, Properties.ofFullCopy(PURPLE_STUCCO.get()))
+            () -> new StairBlock(PURPLE_STUCCO.get().defaultBlockState(), Properties.ofFullCopy(PURPLE_STUCCO.get()))
     );
     public static final Supplier<Block> PURPLE_STUCCO_SLAB = register(
             "purple_stucco_slab",
@@ -497,7 +496,7 @@ public class VerdanceBlocks {
     );
     public static final Supplier<Block> MAGENTA_STUCCO_STAIRS = register(
             "magenta_stucco_stairs",
-            () -> new StairBlock(MAGENTA_STUCCO, Properties.ofFullCopy(MAGENTA_STUCCO.get()))
+            () -> new StairBlock(MAGENTA_STUCCO.get().defaultBlockState(), Properties.ofFullCopy(MAGENTA_STUCCO.get()))
     );
     public static final Supplier<Block> MAGENTA_STUCCO_SLAB = register(
             "magenta_stucco_slab",
@@ -513,7 +512,7 @@ public class VerdanceBlocks {
     );
     public static final Supplier<Block> PINK_STUCCO_STAIRS = register(
             "pink_stucco_stairs",
-            () -> new StairBlock(PINK_STUCCO, Properties.ofFullCopy(PINK_STUCCO.get()))
+            () -> new StairBlock(PINK_STUCCO.get().defaultBlockState(), Properties.ofFullCopy(PINK_STUCCO.get()))
     );
     public static final Supplier<Block> PINK_STUCCO_SLAB = register(
             "pink_stucco_slab",
@@ -600,22 +599,7 @@ public class VerdanceBlocks {
                     .pushReaction(PushReaction.DESTROY))
     );
 
-    public static void init() {
-        /*
-        FlammableBlockRegistry.getDefaultInstance().add(MULBERRY_LOG, 5, 5);
-        FlammableBlockRegistry.getDefaultInstance().add(MULBERRY_WOOD, 5, 5);
-        FlammableBlockRegistry.getDefaultInstance().add(STRIPPED_MULBERRY_LOG, 5, 5);
-        FlammableBlockRegistry.getDefaultInstance().add(STRIPPED_MULBERRY_WOOD, 5, 5);
-        FlammableBlockRegistry.getDefaultInstance().add(MULBERRY_PLANKS, 5, 20);
-        FlammableBlockRegistry.getDefaultInstance().add(MULBERRY_STAIRS, 5, 20);
-        FlammableBlockRegistry.getDefaultInstance().add(MULBERRY_SLAB, 5, 20);
-        FlammableBlockRegistry.getDefaultInstance().add(MULBERRY_FENCE, 5, 20);
-        FlammableBlockRegistry.getDefaultInstance().add(MULBERRY_FENCE_GATE, 5, 20);
-        FlammableBlockRegistry.getDefaultInstance().add(MULBERRY_LEAVES, 30, 60);
-        StrippableBlockRegistry.register(MULBERRY_LOG, STRIPPED_MULBERRY_LOG);
-        StrippableBlockRegistry.register(MULBERRY_WOOD, STRIPPED_MULBERRY_WOOD);
-        */
-    }
+    public static void init() {}
 
     // Utils
 

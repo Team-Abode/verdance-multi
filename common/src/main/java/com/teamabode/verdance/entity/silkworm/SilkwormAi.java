@@ -8,7 +8,7 @@ import com.teamabode.verdance.entity.silkworm.task.TurnIntoCocoonTask;
 import com.teamabode.verdance.registry.VerdanceActivities;
 import com.teamabode.verdance.registry.VerdanceMemoryModuleTypes;
 import com.teamabode.verdance.registry.VerdanceSensorTypes;
-import com.teamabode.verdance.tag.VerdanceItemTags;
+import com.teamabode.verdance.registry.tag.VerdanceItemTags;
 import net.minecraft.world.entity.ai.Brain;
 import net.minecraft.world.entity.ai.behavior.*;
 import net.minecraft.world.entity.ai.memory.MemoryModuleType;

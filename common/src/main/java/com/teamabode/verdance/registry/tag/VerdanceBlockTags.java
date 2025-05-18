@@ -1,4 +1,4 @@
-package com.teamabode.verdance.tag;
+package com.teamabode.verdance.registry.tag;
 
 import com.teamabode.verdance.Verdance;
 import net.minecraft.core.registries.Registries;

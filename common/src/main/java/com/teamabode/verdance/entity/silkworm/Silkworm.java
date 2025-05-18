@@ -2,7 +2,7 @@ package com.teamabode.verdance.entity.silkworm;
 
 import com.mojang.serialization.Dynamic;
 import com.teamabode.verdance.registry.VerdanceSoundEvents;
-import com.teamabode.verdance.tag.VerdanceItemTags;
+import com.teamabode.verdance.registry.tag.VerdanceItemTags;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;

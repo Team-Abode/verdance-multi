@@ -1,7 +1,7 @@
 package com.teamabode.verdance.block;
 
 import com.mojang.serialization.MapCodec;
-import com.teamabode.verdance.tag.VerdanceBlockTags;
+import com.teamabode.verdance.registry.tag.VerdanceBlockTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;

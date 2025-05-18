@@ -8,7 +8,7 @@ import com.teamabode.verdance.registry.VerdanceActivities;
 import com.teamabode.verdance.registry.VerdanceEntityTypes;
 import com.teamabode.verdance.registry.VerdanceMemoryModuleTypes;
 import com.teamabode.verdance.registry.VerdanceSensorTypes;
-import com.teamabode.verdance.tag.VerdanceItemTags;
+import com.teamabode.verdance.registry.tag.VerdanceItemTags;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.Brain;
