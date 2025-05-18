@@ -35,9 +35,3 @@ loom {
         }
     }
 }
-
-fabricApi {
-    configureDataGeneration {
-        outputDirectory = project(":common").file("src/main/generated/").absoluteFile
-    }
-}
