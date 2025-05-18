@@ -2,7 +2,7 @@ package com.teamabode.verdance.entity.silkmoth.task;
 
 import com.teamabode.verdance.entity.behavior.ImprovedSingleTickTask;
 import com.teamabode.verdance.entity.silkmoth.SilkMoth;
-import com.teamabode.verdance.misc.SilkMothUtils;
+import com.teamabode.verdance.util.SilkMothUtil;
 import com.teamabode.verdance.registry.VerdanceMemoryModuleTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
@@ -27,13 +27,13 @@ public class GoTowardsLandingTask extends ImprovedSingleTickTask<SilkMoth> {
 
     @Override
     public void start(ServerLevel level, SilkMoth entity, long gameTime) {
-        Optional<BlockPos> landingTarget = SilkMothUtils.calculateLandingTarget(entity);
+        Optional<BlockPos> landingTarget = SilkMothUtil.calculateLandingTarget(entity);
 
         if (landingTarget.isPresent()) {
             BehaviorUtils.setWalkAndLookTargetMemories(entity, landingTarget.get(), 1.0f, 0);
             return;
         }
-        Optional<BlockPos> strollTarget = SilkMothUtils.calculateStrollTarget(entity);
+        Optional<BlockPos> strollTarget = SilkMothUtil.calculateStrollTarget(entity);
         strollTarget.ifPresent(pos -> BehaviorUtils.setWalkAndLookTargetMemories(entity, strollTarget.get(), 1.0f, 0));
     }
 }

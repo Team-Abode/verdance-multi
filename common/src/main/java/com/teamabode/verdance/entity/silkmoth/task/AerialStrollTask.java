@@ -2,7 +2,7 @@ package com.teamabode.verdance.entity.silkmoth.task;
 
 import com.teamabode.verdance.entity.silkmoth.SilkMoth;
 import com.teamabode.verdance.entity.behavior.ImprovedSingleTickTask;
-import com.teamabode.verdance.misc.SilkMothUtils;
+import com.teamabode.verdance.util.SilkMothUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.ai.behavior.BlockPosTracker;
@@ -22,7 +22,7 @@ public class AerialStrollTask extends ImprovedSingleTickTask<SilkMoth> {
     }
 
     public void start(ServerLevel level, SilkMoth entity, long gameTime) {
-        Optional<BlockPos> pos = SilkMothUtils.calculateStrollTarget(entity);
+        Optional<BlockPos> pos = SilkMothUtil.calculateStrollTarget(entity);
         pos.ifPresent(blockPos -> entity.getBrain().setMemory(MemoryModuleType.WALK_TARGET, new WalkTarget(new BlockPosTracker(blockPos), 1.0f, 0)));
     }
 }

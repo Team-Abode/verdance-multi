@@ -1,8 +1,11 @@
 package com.teamabode.verdance.registry;
 
 import com.teamabode.verdance.block.*;
+import com.teamabode.verdance.block.access.ButtonBlock;
+import com.teamabode.verdance.block.access.StairBlock;
 import com.teamabode.verdance.misc.*;
 import com.teamabode.verdance.platform.Services;
+import com.teamabode.verdance.util.VerdanceBlockProperties;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.DyeColor;
@@ -44,7 +47,7 @@ public class VerdanceBlocks {
     );
     public static final Supplier<Block> MULBERRY_STAIRS = register(
             "mulberry_stairs",
-            () -> new StairBlock(MULBERRY_PLANKS.get().defaultBlockState(), Properties.ofFullCopy(MULBERRY_PLANKS.get()))
+            () -> new StairBlock(MULBERRY_PLANKS, Properties.ofFullCopy(MULBERRY_PLANKS.get()))
     );
     public static final Supplier<Block> MULBERRY_SLAB = register(
             "mulberry_slab",
@@ -89,7 +92,7 @@ public class VerdanceBlocks {
                     .mapColor(MapColor.TERRACOTTA_YELLOW)
                     .strength(3.0F)
                     .instrument(NoteBlockInstrument.BASS)
-                    .isValidSpawn(Blocks::never)
+                    .isValidSpawn(VerdanceBlockProperties::never)
                     .noOcclusion()
                     .ignitedByLava())
     );
@@ -106,7 +109,7 @@ public class VerdanceBlocks {
     );
     public static final Supplier<Block> MULBERRY_BUTTON = register(
             "mulberry_button",
-            () -> Blocks.woodenButton(VerdanceBlockSetTypes.MULBERRY)
+            () -> new ButtonBlock(VerdanceBlockSetTypes.MULBERRY, 30, VerdanceBlockProperties.woodenButton())
     );
     public static final Supplier<Block> MULBERRY_SIGN = registerWithoutItem(
             "mulberry_sign",
@@ -147,7 +150,7 @@ public class VerdanceBlocks {
                     .instrument(NoteBlockInstrument.BASS)
                     .noCollission()
                     .strength(1.0F)
-                    .dropsLike(MULBERRY_HANGING_SIGN)
+                    .dropsLike(MULBERRY_HANGING_SIGN.get())
                     .ignitedByLava())
     );
     public static final Supplier<Block> MULBERRY_LEAVES = register(
@@ -168,7 +171,10 @@ public class VerdanceBlocks {
     );
     public static final Supplier<Block> POTTED_MULBERRY_SAPLING = registerWithoutItem(
             "potted_mulberry_sapling",
-            () -> Blocks.flowerPot(MULBERRY_SAPLING)
+            () -> new FlowerPotBlock(MULBERRY_SAPLING.get(), Properties.of()
+                    .instabreak()
+                    .noOcclusion()
+                    .pushReaction(PushReaction.DESTROY))
     );
     public static final Supplier<Block> CANTALOUPE = register(
             "cantaloupe",
@@ -179,10 +185,7 @@ public class VerdanceBlocks {
     );
     public static final Supplier<Block> ATTACHED_CANTALOUPE_STEM = registerWithoutItem(
             "attached_cantaloupe_stem",
-            () -> new AttachedStemBlock(
-                    VerdanceBlockReferences.CANTALOUPE_STEM,
-                    VerdanceBlockReferences.CANTALOUPE,
-                    VerdanceItemReferences.CANTALOUPE_SEEDS,
+            () -> new AttachedCantaloupeStemBlock(
                     Properties.of()
                             .noCollission()
                             .randomTicks()
@@ -192,10 +195,7 @@ public class VerdanceBlocks {
     );
     public static final Supplier<Block> CANTALOUPE_STEM = registerWithoutItem(
             "cantaloupe_stem",
-            () -> new StemBlock(
-                VerdanceBlockReferences.CANTALOUPE,
-                VerdanceBlockReferences.ATTACHED_CANTALOUPE_STEM,
-                VerdanceItemReferences.CANTALOUPE_SEEDS,
+            () -> new CantaloupeStemBlock(
                 Properties.of()
                         .noCollission()
                         .randomTicks()
@@ -203,77 +203,77 @@ public class VerdanceBlocks {
                         .sound(SoundType.HARD_CROP)
                         .pushReaction(PushReaction.DESTROY))
     );
-    public static final Supplier<Block>WHITE_CUSHION = register(
+    public static final Supplier<Block> WHITE_CUSHION = register(
             "white_cushion",
-            () -> new Block(cushion(DyeColor.WHITE))
+            () -> new Block(VerdanceBlockProperties.cushion(DyeColor.WHITE))
     );
     public static final Supplier<Block> LIGHT_GRAY_CUSHION = register(
             "light_gray_cushion",
-            () -> new Block(cushion(DyeColor.LIGHT_GRAY))
+            () -> new Block(VerdanceBlockProperties.cushion(DyeColor.LIGHT_GRAY))
     );
     public static final Supplier<Block> GRAY_CUSHION = register(
             "gray_cushion",
-            () -> new Block(cushion(DyeColor.GRAY))
+            () -> new Block(VerdanceBlockProperties.cushion(DyeColor.GRAY))
     );
     public static final Supplier<Block> BLACK_CUSHION = register(
             "black_cushion",
-            () -> new Block(cushion(DyeColor.BLACK))
+            () -> new Block(VerdanceBlockProperties.cushion(DyeColor.BLACK))
     );
     public static final Supplier<Block> BROWN_CUSHION = register(
             "brown_cushion",
-            () -> new Block(cushion(DyeColor.BROWN))
+            () -> new Block(VerdanceBlockProperties.cushion(DyeColor.BROWN))
     );
     public static final Supplier<Block> RED_CUSHION = register(
             "red_cushion",
-            () -> new Block(cushion(DyeColor.RED))
+            () -> new Block(VerdanceBlockProperties.cushion(DyeColor.RED))
     );
     public static final Supplier<Block> ORANGE_CUSHION = register(
             "orange_cushion",
-            () -> new Block(cushion(DyeColor.ORANGE))
+            () -> new Block(VerdanceBlockProperties.cushion(DyeColor.ORANGE))
     );
     public static final Supplier<Block> YELLOW_CUSHION = register(
             "yellow_cushion",
-            () -> new Block(cushion(DyeColor.YELLOW))
+            () -> new Block(VerdanceBlockProperties.cushion(DyeColor.YELLOW))
     );
     public static final Supplier<Block> LIME_CUSHION = register(
             "lime_cushion",
-            () -> new Block(cushion(DyeColor.LIME))
+            () -> new Block(VerdanceBlockProperties.cushion(DyeColor.LIME))
     );
     public static final Supplier<Block> GREEN_CUSHION = register(
             "green_cushion",
-            () -> new Block(cushion(DyeColor.GREEN))
+            () -> new Block(VerdanceBlockProperties.cushion(DyeColor.GREEN))
     );
     public static final Supplier<Block> CYAN_CUSHION = register(
             "cyan_cushion",
-            () -> new Block(cushion(DyeColor.CYAN))
+            () -> new Block(VerdanceBlockProperties.cushion(DyeColor.CYAN))
     );
     public static final Supplier<Block> LIGHT_BLUE_CUSHION = register(
             "light_blue_cushion",
-            () -> new Block(cushion(DyeColor.LIGHT_BLUE))
+            () -> new Block(VerdanceBlockProperties.cushion(DyeColor.LIGHT_BLUE))
     );
     public static final Supplier<Block> BLUE_CUSHION = register(
             "blue_cushion",
-            () -> new Block(cushion(DyeColor.BLUE))
+            () -> new Block(VerdanceBlockProperties.cushion(DyeColor.BLUE))
     );
     public static final Supplier<Block> PURPLE_CUSHION = register(
             "purple_cushion",
-            () -> new Block(cushion(DyeColor.PURPLE))
+            () -> new Block(VerdanceBlockProperties.cushion(DyeColor.PURPLE))
     );
     public static final Supplier<Block> MAGENTA_CUSHION = register(
             "magenta_cushion",
-            () -> new Block(cushion(DyeColor.MAGENTA))
+            () -> new Block(VerdanceBlockProperties.cushion(DyeColor.MAGENTA))
     );
     public static final Supplier<Block> PINK_CUSHION = register(
             "pink_cushion",
-            () -> new Block(cushion(DyeColor.PINK))
+            () -> new Block(VerdanceBlockProperties.cushion(DyeColor.PINK))
     );
     public static final Supplier<Block> WHITE_STUCCO = register(
             "white_stucco",
-            () -> new Block(stucco(DyeColor.WHITE))
+            () -> new Block(VerdanceBlockProperties.stucco(DyeColor.WHITE))
     );
     public static final Supplier<Block> WHITE_STUCCO_STAIRS = register(
             "white_stucco_stairs",
-            () -> new StairBlock(WHITE_STUCCO.get().defaultBlockState(), Properties.ofFullCopy(WHITE_STUCCO.get()))
+            () -> new StairBlock(WHITE_STUCCO, Properties.ofFullCopy(WHITE_STUCCO.get()))
     );
     public static final Supplier<Block> WHITE_STUCCO_SLAB = register(
             "white_stucco_slab",
@@ -285,11 +285,11 @@ public class VerdanceBlocks {
     );
     public static final Supplier<Block> LIGHT_GRAY_STUCCO = register(
             "light_gray_stucco",
-            () -> new Block(stucco(DyeColor.LIGHT_GRAY))
+            () -> new Block(VerdanceBlockProperties.stucco(DyeColor.LIGHT_GRAY))
     );
     public static final Supplier<Block> LIGHT_GRAY_STUCCO_STAIRS = register(
             "light_gray_stucco_stairs",
-            () -> new StairBlock(LIGHT_GRAY_STUCCO.get().defaultBlockState(), Properties.ofFullCopy(LIGHT_GRAY_STUCCO.get()))
+            () -> new StairBlock(LIGHT_GRAY_STUCCO, Properties.ofFullCopy(LIGHT_GRAY_STUCCO.get()))
     );
     public static final Supplier<Block> LIGHT_GRAY_STUCCO_SLAB = register(
             "light_gray_stucco_slab",
@@ -301,11 +301,11 @@ public class VerdanceBlocks {
     );
     public static final Supplier<Block> GRAY_STUCCO = register(
             "gray_stucco",
-            () -> new Block(stucco(DyeColor.GRAY))
+            () -> new Block(VerdanceBlockProperties.stucco(DyeColor.GRAY))
     );
     public static final Supplier<Block> GRAY_STUCCO_STAIRS = register(
             "gray_stucco_stairs",
-            () -> new StairBlock(GRAY_STUCCO.get().defaultBlockState(), Properties.ofFullCopy(GRAY_STUCCO.get()))
+            () -> new StairBlock(GRAY_STUCCO, Properties.ofFullCopy(GRAY_STUCCO.get()))
     );
     public static final Supplier<Block> GRAY_STUCCO_SLAB = register(
             "gray_stucco_slab",
@@ -317,11 +317,11 @@ public class VerdanceBlocks {
     );
     public static final Supplier<Block> BLACK_STUCCO = register(
             "black_stucco",
-            () -> new Block(stucco(DyeColor.BLACK))
+            () -> new Block(VerdanceBlockProperties.stucco(DyeColor.BLACK))
     );
     public static final Supplier<Block> BLACK_STUCCO_STAIRS = register(
             "black_stucco_stairs",
-            () -> new StairBlock(BLACK_STUCCO.get().defaultBlockState(), Properties.ofFullCopy(BLACK_STUCCO))
+            () -> new StairBlock(BLACK_STUCCO, Properties.ofFullCopy(BLACK_STUCCO.get()))
     );
     public static final Supplier<Block> BLACK_STUCCO_SLAB = register(
             "black_stucco_slab",
@@ -333,11 +333,11 @@ public class VerdanceBlocks {
     );
     public static final Supplier<Block> BROWN_STUCCO = register(
             "brown_stucco",
-            () -> new Block(stucco(DyeColor.BROWN))
+            () -> new Block(VerdanceBlockProperties.stucco(DyeColor.BROWN))
     );
     public static final Supplier<Block> BROWN_STUCCO_STAIRS = register(
             "brown_stucco_stairs",
-            () -> new StairBlock(BROWN_STUCCO.get().defaultBlockState(), Properties.ofFullCopy(BROWN_STUCCO.get()))
+            () -> new StairBlock(BROWN_STUCCO, Properties.ofFullCopy(BROWN_STUCCO.get()))
     );
     public static final Supplier<Block> BROWN_STUCCO_SLAB = register(
             "brown_stucco_slab",
@@ -349,11 +349,11 @@ public class VerdanceBlocks {
     );
     public static final Supplier<Block> RED_STUCCO = register(
             "red_stucco",
-            () -> new Block(stucco(DyeColor.RED))
+            () -> new Block(VerdanceBlockProperties.stucco(DyeColor.RED))
     );
     public static final Supplier<Block> RED_STUCCO_STAIRS = register(
             "red_stucco_stairs",
-            () -> new StairBlock(RED_STUCCO.get().defaultBlockState(), Properties.ofFullCopy(RED_STUCCO.get()))
+            () -> new StairBlock(RED_STUCCO, Properties.ofFullCopy(RED_STUCCO.get()))
     );
     public static final Supplier<Block> RED_STUCCO_SLAB = register(
             "red_stucco_slab",
@@ -365,11 +365,11 @@ public class VerdanceBlocks {
     );
     public static final Supplier<Block> ORANGE_STUCCO = register(
             "orange_stucco",
-            () -> new Block(stucco(DyeColor.ORANGE))
+            () -> new Block(VerdanceBlockProperties.stucco(DyeColor.ORANGE))
     );
     public static final Supplier<Block> ORANGE_STUCCO_STAIRS = register(
             "orange_stucco_stairs",
-            () -> new StairBlock(ORANGE_STUCCO.get().defaultBlockState(), Properties.ofFullCopy(ORANGE_STUCCO.get()))
+            () -> new StairBlock(ORANGE_STUCCO, Properties.ofFullCopy(ORANGE_STUCCO.get()))
     );
     public static final Supplier<Block> ORANGE_STUCCO_SLAB = register(
             "orange_stucco_slab",
@@ -381,11 +381,11 @@ public class VerdanceBlocks {
     );
     public static final Supplier<Block> YELLOW_STUCCO = register(
             "yellow_stucco",
-            () -> new Block(stucco(DyeColor.YELLOW))
+            () -> new Block(VerdanceBlockProperties.stucco(DyeColor.YELLOW))
     );
     public static final Supplier<Block> YELLOW_STUCCO_STAIRS = register(
             "yellow_stucco_stairs",
-            () -> new StairBlock(YELLOW_STUCCO.get().defaultBlockState(), Properties.ofFullCopy(YELLOW_STUCCO.get()))
+            () -> new StairBlock(YELLOW_STUCCO, Properties.ofFullCopy(YELLOW_STUCCO.get()))
     );
     public static final Supplier<Block> YELLOW_STUCCO_SLAB = register(
             "yellow_stucco_slab",
@@ -397,123 +397,123 @@ public class VerdanceBlocks {
     );
     public static final Supplier<Block> LIME_STUCCO = register(
             "lime_stucco",
-            () -> new Block(stucco(DyeColor.LIME))
+            () -> new Block(VerdanceBlockProperties.stucco(DyeColor.LIME))
     );
     public static final Supplier<Block> LIME_STUCCO_STAIRS = register(
             "lime_stucco_stairs",
-            new StairBlock(LIME_STUCCO.defaultBlockState(), Properties.ofFullCopy(LIME_STUCCO))
+            () -> new StairBlock(LIME_STUCCO, Properties.ofFullCopy(LIME_STUCCO.get()))
     );
     public static final Supplier<Block> LIME_STUCCO_SLAB = register(
             "lime_stucco_slab",
-            new SlabBlock(Properties.ofFullCopy(LIME_STUCCO))
+            () -> new SlabBlock(Properties.ofFullCopy(LIME_STUCCO.get()))
     );
     public static final Supplier<Block> LIME_STUCCO_WALL = register(
             "lime_stucco_wall",
-            new WallBlock(Properties.ofFullCopy(LIME_STUCCO))
+            () -> new WallBlock(Properties.ofFullCopy(LIME_STUCCO.get()))
     );
     public static final Supplier<Block> GREEN_STUCCO = register(
             "green_stucco",
-            () -> new Block(stucco(DyeColor.GREEN))
+            () -> new Block(VerdanceBlockProperties.stucco(DyeColor.GREEN))
     );
     public static final Supplier<Block> GREEN_STUCCO_STAIRS = register(
             "green_stucco_stairs",
-            new StairBlock(GREEN_STUCCO.defaultBlockState(), Properties.ofFullCopy(GREEN_STUCCO))
+            () -> new StairBlock(GREEN_STUCCO, Properties.ofFullCopy(GREEN_STUCCO.get()))
     );
     public static final Supplier<Block> GREEN_STUCCO_SLAB = register(
             "green_stucco_slab",
-            new SlabBlock(Properties.ofFullCopy(GREEN_STUCCO))
+            () -> new SlabBlock(Properties.ofFullCopy(GREEN_STUCCO.get()))
     );
     public static final Supplier<Block> GREEN_STUCCO_WALL = register(
             "green_stucco_wall",
-            new WallBlock(Properties.ofFullCopy(GREEN_STUCCO))
+            () -> new WallBlock(Properties.ofFullCopy(GREEN_STUCCO.get()))
     );
     public static final Supplier<Block> CYAN_STUCCO = register(
             "cyan_stucco",
-            () -> new Block(stucco(DyeColor.CYAN))
+            () -> new Block(VerdanceBlockProperties.stucco(DyeColor.CYAN))
     );
     public static final Supplier<Block> CYAN_STUCCO_STAIRS = register(
             "cyan_stucco_stairs",
-            new StairBlock(CYAN_STUCCO.defaultBlockState(), Properties.ofFullCopy(CYAN_STUCCO))
+            () -> new StairBlock(CYAN_STUCCO, Properties.ofFullCopy(CYAN_STUCCO.get()))
     );
     public static final Supplier<Block> CYAN_STUCCO_SLAB = register(
             "cyan_stucco_slab",
-            new SlabBlock(Properties.ofFullCopy(CYAN_STUCCO))
+            () -> new SlabBlock(Properties.ofFullCopy(CYAN_STUCCO.get()))
     );
     public static final Supplier<Block> CYAN_STUCCO_WALL = register(
             "cyan_stucco_wall",
-            new WallBlock(Properties.ofFullCopy(CYAN_STUCCO))
+            () -> new WallBlock(Properties.ofFullCopy(CYAN_STUCCO.get()))
     );
     public static final Supplier<Block> LIGHT_BLUE_STUCCO = register(
             "light_blue_stucco",
-            () -> new Block(stucco(DyeColor.LIGHT_BLUE))
+            () -> new Block(VerdanceBlockProperties.stucco(DyeColor.LIGHT_BLUE))
     );
     public static final Supplier<Block> LIGHT_BLUE_STUCCO_STAIRS = register(
             "light_blue_stucco_stairs",
-            new StairBlock(LIGHT_BLUE_STUCCO.defaultBlockState(), Properties.ofFullCopy(LIGHT_BLUE_STUCCO))
+            () -> new StairBlock(LIGHT_BLUE_STUCCO, Properties.ofFullCopy(LIGHT_BLUE_STUCCO.get()))
     );
     public static final Supplier<Block> LIGHT_BLUE_STUCCO_SLAB = register(
             "light_blue_stucco_slab",
-            new SlabBlock(Properties.ofFullCopy(LIGHT_BLUE_STUCCO))
+            () -> new SlabBlock(Properties.ofFullCopy(LIGHT_BLUE_STUCCO.get()))
     );
     public static final Supplier<Block> LIGHT_BLUE_STUCCO_WALL = register(
             "light_blue_stucco_wall",
-            new WallBlock(Properties.ofFullCopy(LIGHT_BLUE_STUCCO))
+            () -> new WallBlock(Properties.ofFullCopy(LIGHT_BLUE_STUCCO.get()))
     );
     public static final Supplier<Block> BLUE_STUCCO = register(
             "blue_stucco",
-            () -> new Block(stucco(DyeColor.BLUE))
+            () -> new Block(VerdanceBlockProperties.stucco(DyeColor.BLUE))
     );
     public static final Supplier<Block> BLUE_STUCCO_STAIRS = register(
             "blue_stucco_stairs",
-            new StairBlock(BLUE_STUCCO.defaultBlockState(), Properties.ofFullCopy(BLUE_STUCCO))
+            () -> new StairBlock(BLUE_STUCCO, Properties.ofFullCopy(BLUE_STUCCO.get()))
     );
     public static final Supplier<Block> BLUE_STUCCO_SLAB = register(
             "blue_stucco_slab",
-            new SlabBlock(Properties.ofFullCopy(BLUE_STUCCO))
+            () -> new SlabBlock(Properties.ofFullCopy(BLUE_STUCCO.get()))
     );
     public static final Supplier<Block> BLUE_STUCCO_WALL = register(
             "blue_stucco_wall",
-            new WallBlock(Properties.ofFullCopy(BLUE_STUCCO))
+            () -> new WallBlock(Properties.ofFullCopy(BLUE_STUCCO.get()))
     );
     public static final Supplier<Block> PURPLE_STUCCO = register(
             "purple_stucco",
-            () -> new Block(stucco(DyeColor.PURPLE))
+            () -> new Block(VerdanceBlockProperties.stucco(DyeColor.PURPLE))
     );
     public static final Supplier<Block> PURPLE_STUCCO_STAIRS = register(
             "purple_stucco_stairs",
-            new StairBlock(PURPLE_STUCCO.defaultBlockState(), Properties.ofFullCopy(PURPLE_STUCCO))
+            () -> new StairBlock(PURPLE_STUCCO, Properties.ofFullCopy(PURPLE_STUCCO.get()))
     );
     public static final Supplier<Block> PURPLE_STUCCO_SLAB = register(
             "purple_stucco_slab",
-            new SlabBlock(Properties.ofFullCopy(PURPLE_STUCCO))
+            () -> new SlabBlock(Properties.ofFullCopy(PURPLE_STUCCO.get()))
     );
     public static final Supplier<Block> PURPLE_STUCCO_WALL = register(
             "purple_stucco_wall",
-            new WallBlock(Properties.ofFullCopy(PURPLE_STUCCO))
+            () -> new WallBlock(Properties.ofFullCopy(PURPLE_STUCCO.get()))
     );
     public static final Supplier<Block> MAGENTA_STUCCO = register(
             "magenta_stucco",
-            () -> new Block(stucco(DyeColor.MAGENTA))
+            () -> new Block(VerdanceBlockProperties.stucco(DyeColor.MAGENTA))
     );
     public static final Supplier<Block> MAGENTA_STUCCO_STAIRS = register(
             "magenta_stucco_stairs",
-            new StairBlock(MAGENTA_STUCCO.defaultBlockState(), Properties.ofFullCopy(MAGENTA_STUCCO))
+            () -> new StairBlock(MAGENTA_STUCCO, Properties.ofFullCopy(MAGENTA_STUCCO.get()))
     );
     public static final Supplier<Block> MAGENTA_STUCCO_SLAB = register(
             "magenta_stucco_slab",
-            new SlabBlock(Properties.ofFullCopy(MAGENTA_STUCCO))
+            () -> new SlabBlock(Properties.ofFullCopy(MAGENTA_STUCCO.get()))
     );
     public static final Supplier<Block> MAGENTA_STUCCO_WALL = register(
             "magenta_stucco_wall",
-            new WallBlock(Properties.ofFullCopy(MAGENTA_STUCCO))
+            () -> new WallBlock(Properties.ofFullCopy(MAGENTA_STUCCO.get()))
     );
     public static final Supplier<Block> PINK_STUCCO = register(
             "pink_stucco",
-            () -> new Block(stucco(DyeColor.PINK))
+            () -> new Block(VerdanceBlockProperties.stucco(DyeColor.PINK))
     );
     public static final Supplier<Block> PINK_STUCCO_STAIRS = register(
             "pink_stucco_stairs",
-            () -> new StairBlock(PINK_STUCCO.get().defaultBlockState(), Properties.ofFullCopy(PINK_STUCCO.get()))
+            () -> new StairBlock(PINK_STUCCO, Properties.ofFullCopy(PINK_STUCCO.get()))
     );
     public static final Supplier<Block> PINK_STUCCO_SLAB = register(
             "pink_stucco_slab",
@@ -550,7 +550,10 @@ public class VerdanceBlocks {
     );
     public static final Supplier<Block>POTTED_VIOLET = registerWithoutItem(
             "potted_violet",
-            () -> Blocks.flowerPot(VIOLET)
+            () -> new FlowerPotBlock(VIOLET.get(), Properties.of()
+                    .instabreak()
+                    .noOcclusion()
+                    .pushReaction(PushReaction.DESTROY))
     );
     public static final Supplier<Block> SHRUB = register(
             "shrub",
@@ -565,27 +568,36 @@ public class VerdanceBlocks {
     );
     public static final Supplier<Block>POTTED_SHRUB = registerWithoutItem(
             "potted_shrub",
-            () -> Blocks.flowerPot(SHRUB)
+            () -> new FlowerPotBlock(SHRUB.get(), Properties.of()
+                    .instabreak()
+                    .noOcclusion()
+                    .pushReaction(PushReaction.DESTROY))
     );
     public static final Supplier<Block> YELLOW_FLOWERING_SHRUB = register(
             "yellow_flowering_shrub",
             () -> new FloweringShrubBlock(
                     VerdanceConfiguredFeatures.PATCH_YELLOW_FLOWERING_SHRUB_BONEMEAL,
-                    Properties.ofFullCopy(SHRUB))
+                    Properties.ofFullCopy(SHRUB.get()))
     );
     public static final Supplier<Block>POTTED_YELLOW_FLOWERING_SHRUB = registerWithoutItem(
             "potted_yellow_flowering_shrub",
-            () -> Blocks.flowerPot(YELLOW_FLOWERING_SHRUB)
+            () -> new FlowerPotBlock(YELLOW_FLOWERING_SHRUB.get(), Properties.of()
+                    .instabreak()
+                    .noOcclusion()
+                    .pushReaction(PushReaction.DESTROY))
     );
     public static final Supplier<Block> PINK_FLOWERING_SHRUB = register(
             "pink_flowering_shrub",
             () -> new FloweringShrubBlock(
                     VerdanceConfiguredFeatures.PATCH_PINK_FLOWERING_SHRUB_BONEMEAL,
-                    Properties.ofFullCopy(SHRUB))
+                    Properties.ofFullCopy(SHRUB.get()))
     );
     public static final Supplier<Block> POTTED_PINK_FLOWERING_SHRUB = registerWithoutItem(
             "potted_pink_flowering_shrub",
-            () -> Blocks.flowerPot(PINK_FLOWERING_SHRUB)
+            () -> new FlowerPotBlock(PINK_FLOWERING_SHRUB.get(), Properties.of()
+                    .instabreak()
+                    .noOcclusion()
+                    .pushReaction(PushReaction.DESTROY))
     );
 
     public static void init() {
@@ -615,25 +627,5 @@ public class VerdanceBlocks {
 
     private static <T extends Block> Supplier<T> registerWithoutItem(String name, Supplier<T> block) {
         return Services.REGISTRY.registerBlock(name, block);
-    }
-
-    // Properties Utils
-
-    private static Properties stucco(DyeColor color) {
-        return Properties.of()
-                .mapColor(color)
-                .sound(VerdanceBlockSoundGroups.STUCCO)
-                .requiresCorrectToolForDrops()
-                .instrument(NoteBlockInstrument.BASEDRUM)
-                .strength(1.5F, 5.5F);
-    }
-    private static Properties cushion(DyeColor color) {
-        return Properties.of()
-                .mapColor(color)
-                .sound(SoundType.WOOD)
-                .strength(0.2f)
-                .noCollission()
-                .ignitedByLava()
-                .pushReaction(PushReaction.DESTROY);
     }
 }

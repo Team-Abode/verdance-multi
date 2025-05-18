@@ -1,8 +1,9 @@
-package com.teamabode.verdance.misc;
+package com.teamabode.verdance.util;
 
 import com.teamabode.verdance.block.SilkCocoonBlock;
 import com.teamabode.verdance.entity.silkmoth.SilkMoth;
 import com.teamabode.verdance.entity.silkworm.Silkworm;
+import com.teamabode.verdance.registry.VerdanceBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -16,7 +17,7 @@ import net.minecraft.world.phys.Vec3;
 import java.util.Optional;
 
 // Utils for the Silk Moth and Silkworm
-public class SilkMothUtils {
+public class SilkMothUtil {
 
     public static Optional<BlockPos> calculateLandingTarget(SilkMoth entity) {
         Vec3 pos = LandRandomPos.getPos(entity, 6, 3);
@@ -37,7 +38,7 @@ public class SilkMothUtils {
     }
 
     public static void transformIntoCocoon(ServerLevel level, Silkworm entity, BlockPos pos, Direction direction) {
-        BlockState state = VerdanceBlocks.SILK_COCOON.defaultBlockState().setValue(SilkCocoonBlock.FACING, direction);
+        BlockState state = VerdanceBlocks.SILK_COCOON.get().defaultBlockState().setValue(SilkCocoonBlock.FACING, direction);
         level.setBlockAndUpdate(pos, state);
         entity.discard();
         // TODO: Play a unique sound

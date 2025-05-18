@@ -1,6 +1,7 @@
 package com.teamabode.verdance.entity.silkmoth.task;
 
 import com.teamabode.verdance.entity.silkmoth.SilkMoth;
+import com.teamabode.verdance.registry.VerdanceBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
@@ -29,7 +30,7 @@ public class LayEggsTask {
         boolean isLeaves = level.getBlockState(relativePos).is(BlockTags.LEAVES);
 
         if (isEmpty && isLeaves) {
-            BlockState eggState = VerdanceBlocks.SILKWORM_EGGS.defaultBlockState();
+            BlockState eggState = VerdanceBlocks.SILKWORM_EGGS.get().defaultBlockState();
 
             level.setBlock(eggPos, eggState, 3);
             level.playSound(null, eggPos, eggState.getSoundType().getPlaceSound(), SoundSource.BLOCKS, 1.0f, 1.0f);

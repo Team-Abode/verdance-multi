@@ -1,5 +1,2 @@
 accessWidener v2 named
-
-accessible class net/minecraft/world/level/block/StairBlock
-accessible class net/minecraft/world/level/block/StemBlock
-accessible class net/minecraft/world/level/block/AttachedStemBlock
+accessible method net/minecraft/world/level/block/Blocks log (Lnet/minecraft/world/level/material/MapColor;Lnet/minecraft/world/level/material/MapColor;)Lnet/minecraft/world/level/block/Block;

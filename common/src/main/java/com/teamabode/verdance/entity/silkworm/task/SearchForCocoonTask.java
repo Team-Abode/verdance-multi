@@ -2,7 +2,7 @@ package com.teamabode.verdance.entity.silkworm.task;
 
 import com.teamabode.verdance.entity.behavior.ImprovedSingleTickTask;
 import com.teamabode.verdance.entity.silkworm.Silkworm;
-import com.teamabode.verdance.misc.SilkMothUtils;
+import com.teamabode.verdance.util.SilkMothUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.ai.behavior.BehaviorUtils;
@@ -27,7 +27,7 @@ public class SearchForCocoonTask extends ImprovedSingleTickTask<Silkworm> {
             this.lastExecution = gameTime + 80L;
             return;
         }
-        Optional<BlockPos> targetPos = SilkMothUtils.getTargetPos(level, entity.blockPosition());
+        Optional<BlockPos> targetPos = SilkMothUtil.getTargetPos(level, entity.blockPosition());
 
         if (targetPos.isPresent()) {
             BehaviorUtils.setWalkAndLookTargetMemories(entity, targetPos.get(), 2.0f, 0);
