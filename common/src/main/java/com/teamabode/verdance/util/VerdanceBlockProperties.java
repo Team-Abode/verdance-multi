@@ -12,6 +12,8 @@ import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.PushReaction;
 
 public class VerdanceBlockProperties {
+    public static final BlockBehaviour.StateArgumentPredicate<EntityType<?>> NEVER = (state, level, pos, value) -> false;
+
     public static BlockBehaviour.Properties stucco(DyeColor color) {
         return BlockBehaviour.Properties.of()
                 .mapColor(color)

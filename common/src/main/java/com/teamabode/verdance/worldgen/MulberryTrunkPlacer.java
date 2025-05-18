@@ -2,6 +2,7 @@ package com.teamabode.verdance.worldgen;
 
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.teamabode.verdance.registry.VerdanceTrunkPlacerTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.BlockPos.MutableBlockPos;
 import net.minecraft.core.Direction;

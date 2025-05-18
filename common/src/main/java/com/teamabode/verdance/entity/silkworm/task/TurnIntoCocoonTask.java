@@ -1,6 +1,6 @@
 package com.teamabode.verdance.entity.silkworm.task;
 
-import com.teamabode.verdance.entity.behavior.ImprovedSingleTickTask;
+import com.teamabode.verdance.entity.behavior.ImprovedOneShot;
 import com.teamabode.verdance.entity.silkworm.Silkworm;
 import com.teamabode.verdance.util.SilkMothUtil;
 import com.teamabode.verdance.registry.VerdanceMemoryModuleTypes;
@@ -14,7 +14,7 @@ import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.Map;
 
-public class TurnIntoCocoonTask extends ImprovedSingleTickTask<Silkworm> {
+public class TurnIntoCocoonTask extends ImprovedOneShot<Silkworm> {
 
     @Override
     public void requires(Map<MemoryModuleType<?>, MemoryStatus> requirements) {

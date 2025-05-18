@@ -5,7 +5,7 @@ import com.teamabode.verdance.misc.*;
 import com.teamabode.verdance.platform.Services;
 import com.teamabode.verdance.registry.datapack.VerdanceConfiguredFeatures;
 import com.teamabode.verdance.util.VerdanceBlockProperties;
-import com.teamabode.verdance.worldgen.VerdanceSaplingGenerators;
+import com.teamabode.verdance.misc.VerdanceSaplingGenerators;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.DyeColor;
@@ -92,7 +92,7 @@ public class VerdanceBlocks {
                     .mapColor(MapColor.TERRACOTTA_YELLOW)
                     .strength(3.0F)
                     .instrument(NoteBlockInstrument.BASS)
-                    .isValidSpawn(VerdanceBlockProperties::never)
+                    .isValidSpawn(VerdanceBlockProperties.NEVER)
                     .noOcclusion()
                     .ignitedByLava())
     );

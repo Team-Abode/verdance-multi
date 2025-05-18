@@ -108,7 +108,7 @@ public class NeoForgeRegistryHelper implements IRegistryHelper {
     }
 
     @Override
-    public <T extends CriterionTrigger<?>> Supplier<T> registerTriggerTypes(String name, Supplier<T> trigger) {
+    public <T extends CriterionTrigger<?>> Supplier<T> registerTriggerType(String name, Supplier<T> trigger) {
         return TRIGGER_TYPES.register(name, trigger);
     }
 

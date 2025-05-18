@@ -17,6 +17,9 @@
     "entrypoints": {
         "main": [
             "com.teamabode.verdance.VerdanceFabric"
+        ],
+        "client": [
+            "com.teamabode.verdance.client.VerdanceFabricClient"
         ]
     },
     "mixins": [

@@ -1,6 +1,6 @@
 package com.teamabode.verdance.entity.silkworm.task;
 
-import com.teamabode.verdance.entity.behavior.ImprovedSingleTickTask;
+import com.teamabode.verdance.entity.behavior.ImprovedOneShot;
 import com.teamabode.verdance.entity.silkworm.Silkworm;
 import com.teamabode.verdance.util.SilkMothUtil;
 import net.minecraft.core.BlockPos;
@@ -12,7 +12,7 @@ import net.minecraft.world.entity.ai.memory.MemoryStatus;
 import java.util.Map;
 import java.util.Optional;
 
-public class SearchForCocoonTask extends ImprovedSingleTickTask<Silkworm> {
+public class SearchForCocoonTask extends ImprovedOneShot<Silkworm> {
     private long lastExecution = 0L; // It should only try to attempt this task around every four seconds.
 
     @Override

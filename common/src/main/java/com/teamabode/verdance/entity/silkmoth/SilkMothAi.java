@@ -3,7 +3,7 @@ package com.teamabode.verdance.entity.silkmoth;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 import com.mojang.datafixers.util.Pair;
-import com.teamabode.verdance.entity.silkmoth.task.*;
+import com.teamabode.verdance.entity.silkmoth.behavior.*;
 import com.teamabode.verdance.registry.VerdanceActivities;
 import com.teamabode.verdance.registry.VerdanceEntityTypes;
 import com.teamabode.verdance.registry.VerdanceMemoryModuleTypes;
@@ -67,7 +67,7 @@ public class SilkMothAi {
         brain.addActivity(Activity.CORE, 0, ImmutableList.of(
                 new Swim(1.0f),
                 new TakeOffTask(),
-                new LandTask(),
+                new LandBehavior(),
                 new AnimalPanic<>(1.5f),
                 new LookAtTargetSink(45, 90),
                 new MoveToTargetSink(),
@@ -107,7 +107,7 @@ public class SilkMothAi {
 
     private static RunOne<SilkMoth> addMovementTasks() {
         return new RunOne<>(ImmutableList.of(
-                Pair.of(BehaviorBuilder.triggerIf(SilkMoth::isFlying, new AerialStrollTask()), 2),
+                Pair.of(BehaviorBuilder.triggerIf(SilkMoth::isFlying, new AerialStrollBehavior()), 2),
                 Pair.of(BehaviorBuilder.triggerIf(SilkMoth::isFlying, new GoTowardsLandingTask()), 2),
                 Pair.of(BehaviorBuilder.triggerIf(Predicate.not(SilkMoth::isFlying), RandomStroll.stroll(1.0f)), 2),
                 Pair.of(SetWalkTargetFromLookTarget.create(1.0f, 3), 2),

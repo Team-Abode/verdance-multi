@@ -5,6 +5,7 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.teamabode.verdance.block.SilkCocoonBlock;
 import com.teamabode.verdance.registry.VerdanceBlocks;
+import com.teamabode.verdance.registry.VerdanceTreeDecoratorTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.tags.BlockTags;

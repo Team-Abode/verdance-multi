@@ -1,7 +1,8 @@
-package com.teamabode.verdance.entity.silkmoth.task;
+package com.teamabode.verdance.entity.silkmoth.behavior;
 
 import com.teamabode.verdance.entity.silkmoth.SilkMoth;
-import com.teamabode.verdance.entity.behavior.ImprovedSingleTickTask;
+import com.teamabode.verdance.entity.behavior.ImprovedOneShot;
+import com.teamabode.verdance.registry.VerdanceMemoryModuleTypes;
 import com.teamabode.verdance.util.SilkMothUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
@@ -13,12 +14,12 @@ import net.minecraft.world.entity.ai.memory.WalkTarget;
 import java.util.Map;
 import java.util.Optional;
 
-public class AerialStrollTask extends ImprovedSingleTickTask<SilkMoth> {
+public class AerialStrollBehavior extends ImprovedOneShot<SilkMoth> {
 
     public void requires(Map<MemoryModuleType<?>, MemoryStatus> requirements) {
         requirements.put(MemoryModuleType.WALK_TARGET, MemoryStatus.VALUE_ABSENT);
         requirements.put(MemoryModuleType.LOOK_TARGET, MemoryStatus.REGISTERED);
-        requirements.put(VerdanceMemoryModuleTypes.IS_FLYING, MemoryStatus.VALUE_PRESENT);
+        requirements.put(VerdanceMemoryModuleTypes.IS_FLYING.get(), MemoryStatus.VALUE_PRESENT);
     }
 
     public void start(ServerLevel level, SilkMoth entity, long gameTime) {

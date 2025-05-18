@@ -91,7 +91,7 @@ public class FabricRegistryHelper implements IRegistryHelper {
     }
 
     @Override
-    public <T extends CriterionTrigger<?>> Supplier<T> registerTriggerTypes(String name, Supplier<T> trigger) {
+    public <T extends CriterionTrigger<?>> Supplier<T> registerTriggerType(String name, Supplier<T> trigger) {
         var entry = Registry.register(BuiltInRegistries.TRIGGER_TYPES, Verdance.id(name), trigger.get());
         return () -> entry;
     }

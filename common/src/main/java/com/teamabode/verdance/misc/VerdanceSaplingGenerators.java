@@ -1,4 +1,4 @@
-package com.teamabode.verdance.worldgen;
+package com.teamabode.verdance.misc;
 
 import com.teamabode.verdance.registry.datapack.VerdanceConfiguredFeatures;
 import net.minecraft.world.level.block.grower.TreeGrower;

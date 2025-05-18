@@ -2,6 +2,7 @@ package com.teamabode.verdance.block;
 
 import com.mojang.serialization.MapCodec;
 import com.teamabode.verdance.block.entity.SilkCocoonBlockEntity;
+import com.teamabode.verdance.registry.VerdanceBlockEntityTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.context.BlockPlaceContext;

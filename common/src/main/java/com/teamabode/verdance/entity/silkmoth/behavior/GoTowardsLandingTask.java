@@ -1,6 +1,6 @@
-package com.teamabode.verdance.entity.silkmoth.task;
+package com.teamabode.verdance.entity.silkmoth.behavior;
 
-import com.teamabode.verdance.entity.behavior.ImprovedSingleTickTask;
+import com.teamabode.verdance.entity.behavior.ImprovedOneShot;
 import com.teamabode.verdance.entity.silkmoth.SilkMoth;
 import com.teamabode.verdance.util.SilkMothUtil;
 import com.teamabode.verdance.registry.VerdanceMemoryModuleTypes;
@@ -13,7 +13,7 @@ import net.minecraft.world.entity.ai.memory.MemoryStatus;
 import java.util.Map;
 import java.util.Optional;
 
-public class GoTowardsLandingTask extends ImprovedSingleTickTask<SilkMoth> {
+public class GoTowardsLandingTask extends ImprovedOneShot<SilkMoth> {
 
     @Override
     public void requires(Map<MemoryModuleType<?>, MemoryStatus> requirements) {

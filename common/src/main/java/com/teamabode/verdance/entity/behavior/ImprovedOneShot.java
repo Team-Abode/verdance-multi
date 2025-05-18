@@ -10,7 +10,7 @@ import net.minecraft.world.entity.ai.memory.MemoryStatus;
 
 import java.util.Map;
 
-public abstract class ImprovedSingleTickTask<E extends LivingEntity> extends OneShot<E> {
+public abstract class ImprovedOneShot<E extends LivingEntity> extends OneShot<E> {
     private final Map<MemoryModuleType<?>, MemoryStatus> requiredMemories = Maps.newHashMap();
 
     public abstract void requires(Map<MemoryModuleType<?>, MemoryStatus> requirements);

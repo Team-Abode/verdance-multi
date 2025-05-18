@@ -44,7 +44,7 @@ public interface IRegistryHelper {
 
     <T extends TreeDecorator> Supplier<TreeDecoratorType<T>> registerTreeDecoratorType(String name, Supplier<TreeDecoratorType<T>> type);
 
-    <T extends CriterionTrigger<?>> Supplier<T> registerTriggerTypes(String name, Supplier<T> trigger);
+    <T extends CriterionTrigger<?>> Supplier<T> registerTriggerType(String name, Supplier<T> trigger);
 
     Supplier<DecoratedPotPattern> registerDecoratedPotPattern(String name, Supplier<DecoratedPotPattern> pattern);
 
